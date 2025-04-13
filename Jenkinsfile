@@ -5,12 +5,7 @@ pipeline {
     IMAGE_NAME = "Livinglazer/simple-node-app"
   }
 
-  stages {
-    stage('Clone') {
-      steps {
-        git 'https://github.com/Livinglaser3/Jenkins.git'
-      }
-    }
+
 
     stage('Build Docker Image') {
       steps {
