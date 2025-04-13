@@ -2,11 +2,10 @@ pipeline {
   agent any
 
   environment {
-    IMAGE_NAME = "Livinglazer/simple-node-app"
+    IMAGE_NAME = "yourdockerhubusername/simple-node-app"
   }
 
-
-
+  stages {
     stage('Build Docker Image') {
       steps {
         script {
@@ -17,7 +16,7 @@ pipeline {
 
     stage('Push to Docker Hub') {
       steps {
-        withDockerRegistry([credentialsId: 'Test', url: '']) {
+        withDockerRegistry([credentialsId: 'docker-hub-creds', url: '']) {
           script {
             docker.image("${IMAGE_NAME}:latest").push()
           }
